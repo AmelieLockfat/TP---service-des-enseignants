@@ -72,13 +72,36 @@ public class Enseignant extends Personne {
 
     public int resteAPlanifier(UE ue, TypeIntervention type) {
         int RP = 0;
+        int HeuresProg = 0;
+        int HeuresPrevues = 0;
         for (ServicePrevu sp : ServicePrevu) {
             if (sp.getUeconcerne() == ue) {
+                if (type == TypeIntervention.CM) {
+                    HeuresPrevues = sp.getVolumeCM();
+                }
+            }
+            if (sp.getUeconcerne() == ue) {
+                if (type == TypeIntervention.TD) {
+                    HeuresPrevues = sp.getVolumeTD();
+                }
+                if (sp.getUeconcerne() == ue) {
+                    if (type == TypeIntervention.TP) {
+                        HeuresPrevues = sp.getVolumeTP();
+                    }
+                }
+            }
+                for (Intervention I : InterventionsPrevues) {
+                    if (I.getType() == type) {
+                        HeuresProg = HeuresProg + I.getDuree();
+                    }
+                }
 
             }
 
+        RP= HeuresPrevues - HeuresProg;
+                    return RP;
 
-        }
-return RP;
+
     }
+
 }
