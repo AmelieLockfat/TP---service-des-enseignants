@@ -1,6 +1,9 @@
 package champollion;
 
 public class ServicePrevu {
-	// TODO : implémenter cette classe
+	private int volumeCM;
+    private int volumeTD;
+    private int volumeTP;
+
 
 }
