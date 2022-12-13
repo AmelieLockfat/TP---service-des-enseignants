@@ -7,14 +7,14 @@ public class ServicePrevu {
 	private int volumeCM;
     private int volumeTD;
     private int volumeTP;
-    private ArrayList<Intervention> Interventions;
+
 
     public ServicePrevu(UE ueconcerne, int volumeCM, int volumeTD, int volumeTP, ArrayList<Intervention> interventions) {
         this.ueconcerne = ueconcerne;
         this.volumeCM = volumeCM;
         this.volumeTD = volumeTD;
         this.volumeTP = volumeTP;
-        Interventions = interventions;
+
     }
 
     public ServicePrevu(UE ueconcerne, int volumeCM, int volumeTD, int volumeTP) {
@@ -36,13 +36,6 @@ public class ServicePrevu {
         this.volumeTP = volumeTP;
     }
 
-    public ArrayList<Intervention> getInterventions() {
-        return Interventions;
-    }
-
-    public void setInterventions(ArrayList<Intervention> interventions) {
-        Interventions = interventions;
-    }
 
     public int getVolumeTD() {
         return volumeTD;

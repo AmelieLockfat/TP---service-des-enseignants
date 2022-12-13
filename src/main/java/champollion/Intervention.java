@@ -9,4 +9,7 @@ public class Intervention {
     private int heureDebut;
     private TypeIntervention type;
 
+    public Intervention(TypeIntervention type) {
+        this.type = type;
+    }
 }
