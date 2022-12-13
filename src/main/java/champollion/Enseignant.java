@@ -1,7 +1,9 @@
 package champollion;
 
+import java.util.ArrayList;
+
 public class Enseignant extends Personne {
-    public ServicePrevu ServicePrevu_e;
+    public ArrayList<ServicePrevu> ServicePrevu = new ArrayList<ServicePrevu>();
 
     public Enseignant(String nom, String email) {
         super(nom, email);
@@ -17,7 +19,12 @@ public class Enseignant extends Personne {
      */
     public int heuresPrevues() {
 
+
+    int hP =0;
+    for(ServicePrevu sp : ServicePrevu) {
+        hP=hP+sp.getVolumeCM()+sp.getVolumeTP()+sp.getVolumeTD();
     }
+    return hP;}
 
     /**
      * Calcule le nombre total d'heures prévues pour cet enseignant dans l'UE spécifiée en "heures équivalent TD" Pour
@@ -29,8 +36,14 @@ public class Enseignant extends Personne {
      *
      */
     public int heuresPrevuesPourUE(UE ue) {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        double hP = 0;
+        for (ServicePrevu sp : ServicePrevu) {
+            if (sp.getUeconcerne() == ue) {
+                hP = hP + (sp.getVolumeCM()*1.5) + sp.getVolumeTP()*0.75 + sp.getVolumeTD();
+            }
+        }
+        int heuresP = (int) Math.round(hP);
+        return heuresP;
     }
 
     /**
@@ -42,8 +55,9 @@ public class Enseignant extends Personne {
      * @param volumeTP le volume d'heures de TP
      */
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        ServicePrevu S = new ServicePrevu(ue, volumeCM,volumeTD,volumeTP);
+        ServicePrevu.add(S);
+        System.out.println(ServicePrevu.toString());
     }
 
 }
